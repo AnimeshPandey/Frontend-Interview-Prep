@@ -8,10 +8,6 @@ It includes:
 - **System Design Playbooks** (Microfrontends, Theming, Realtime Collab, etc.)
 - **Advanced Frontend Coding Problems** (Virtual DOM, Scheduler, Diff, Trie Autocomplete…)
 - **Simulation-style Discussions** with step-by-step constraints (how interviewers escalate problems)
-
----
-
-
 ---
 
 ## 🔑 Key Topics Covered
