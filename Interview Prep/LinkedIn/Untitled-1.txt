@@ -1,0 +1,86 @@
+// Requirements
+Parking Occupancy System
+
+Table
+Id | Name | Total capacity | Free spots | ...
+1.    A.      10             5
+50
+
+
+// Edge cases
+1. How to update data every 5 seconds - Polling (UI) or some BE enforced event
+2. What happens when a lot is offline - Just skip re-rendering that row, based on uniqueId
+3. Too much data ->
+    1. Pagination -> 10 a time or so
+    2. Virtualisation (Only rendering a certain number of rows in the viewport, pageLimit=50)
+        Scroll down, IntersectionObserver, next page API call - Debounced (after fixed duration)
+    3. Debounced
+4. Process data from API -> 
+
+// API contract / Data model between BE and FE and between components
+Rest API, Pagination, updates data every 5 seconds
+Possible that some lots might be offline, missing from data
+
+pageNumber=1,2,3..
+[{
+    "id" : "1", uuid()
+    "name" : "A",
+    "totalCapacity" : 10,
+    "freeSpots": 5,
+}, {
+    "id" : "2",
+    "name" : "B",
+    "totalCapacity" : 11,
+    "freeSpots": 3,
+}]
+
+// What patterns / Architecture
+Reader.js => {
+    const id = _property('id');
+    const name = _property('name');
+    const totalCapacity = _property('totalCapacity');
+    const freeSpots = _property('freeSpots');
+}
+
+Table (columns, data) => {
+    // render Table Header
+    render TableHeader
+    // render row per data entry
+    render _map (data) => {
+        const rowId = Reader.id(rowData)
+        Row id={id} rowData={rowData} columns={columns}
+    }
+
+    setInterval 
+};
+
+TableHeader = () = {
+    renders 
+    Id | Name | Total capacity | Free spots | ...
+}
+
+Row (columns, rowData) => {
+    foreach column in columns
+
+}
+
+parkingLotService.api.js => {
+    const getParkingLotData => (pageNumber) => {
+
+    }
+}
+
+ParkingLotTable -> Table
+
+// Improvements / Further Requirements
+
+Failure of APIs - UX improvements
+1. Toaster message to show failure - Last updated time, some information that our system is down
+2. Fallback UI
+3. Increase polling time after repeated failures - 
+
+// Polling API, Next Page API at the same time
+// 
+
+
+// Justfication / Conclusions
